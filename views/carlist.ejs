@@ -1,0 +1,14 @@
+<%- include('./partials/header.ejs') %>
+<body>
+    <h1>Inventory</h1>
+    <% cars.forEach((car) => { %>
+        <h3>Name: <%= car.name %></h3>
+        <h3>Model: <%= car.model %></h3>
+        <h3>Color: <%= car.color %></h3>
+        <h3>Year: <%= car.year %></h3>
+        <h3>Engine: <%= car.engine %></h3>
+        <h3>Power: <%= car.power %></h3>
+        <h3>Top Speed: <%= car.topSpeed %></h3>
+        <hr>
+   <% }) %>
+</body>
