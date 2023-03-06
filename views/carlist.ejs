@@ -9,6 +9,8 @@
         <h3>Engine: <%= car.engine %></h3>
         <h3>Power: <%= car.power %></h3>
         <h3>Top Speed: <%= car.topSpeed %></h3>
+        <a href='/delete/<%= car.name %>'><button>Delete</button></a>
+        <a href='/update/<%= car.name %>'><button>Update</button></a>
         <hr>
    <% }) %>
 </body>

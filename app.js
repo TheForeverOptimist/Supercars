@@ -73,6 +73,17 @@ app.get('/newcar', (req, res) => {
     res.render('newcar.ejs');
 })
 
+app.get('/delete/:name', (req, res) => {
+   sampleCars.forEach((Car) => {
+    if(req.params.name === Car.name) {
+        sampleCars.pop(Car);
+    }
+   })
+console.log(sampleCars);
+res.redirect('/');
+
+})
+
 app.post('/createCar', (req, res) => {
     console.log(req.body);
     sampleCars.push(req.body);
