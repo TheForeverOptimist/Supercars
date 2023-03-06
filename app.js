@@ -58,6 +58,7 @@ app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "views"))
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
     // res.send('Our car is faster than yours');
@@ -66,6 +67,17 @@ app.get('/', (req, res) => {
 //
 app.get('/carList', (req, res) => {
     res.render('carlist.ejs', {cars: sampleCars})
+})
+
+app.get('/newcar', (req, res) => {
+    res.render('newcar.ejs');
+})
+
+app.post('/createCar', (req, res) => {
+    console.log(req.body);
+    sampleCars.push(req.body);
+    res.redirect('/')
+    console.log(sampleCars);
 })
 
 app.listen(4000, () => {
