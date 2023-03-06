@@ -1,4 +1,27 @@
 <%- include('./partials/header.ejs') %>
 <body>
-    
+    <form method="POST" action="/update/<%= carToUpdate.name %>">
+    <label for="name">Name: (previously: <%= carToUpdate.name %>)</label>
+    <input name= 'name' type="text">
+
+    <label for="model">Model: (previously: <%= carToUpdate.model %>)</label>
+    <input name= 'model' type="text">
+
+    <label for="color">Color: (previously: <%= carToUpdate.color %>)</label>
+    <input name= 'color' type="text">
+
+    <label for="year">Year: (previously: <%= carToUpdate.year %>)</label>
+    <input name= 'year' type="text">
+
+    <label for="engine">Engine: (previously: <%= carToUpdate.engine %>)</label>
+    <input name= 'engine' type="text">
+
+    <label for="power">Power: (previously: <%= carToUpdate.power %>)</label>
+    <input name= 'power' type="text">
+
+    <label for="topSpeed">Top Speed: (previously: <%= carToUpdate.topSpeed %>)</label>
+    <input name= 'topSpeed' type="text">
+
+    <input type="submit" value="submit">
+</form>
 </body>

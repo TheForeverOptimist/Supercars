@@ -60,8 +60,17 @@ app.set("views", path.join(__dirname, "views"))
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
-    // res.send('Our car is faster than yours');
+app.get('/', async(req, res) => {
+    const db = await Supercar.create({
+        'engine': 'v8',
+        'power': '450hp',
+        'topSpeed': '450mph',
+        'color': 'midnight blue',
+        'name': 'Lamborghini',
+        'model': 'huracan',
+        'year': '2015'
+    });
+    console.log(db);
     res.render('index.ejs')
 })
 //
@@ -81,7 +90,34 @@ app.get('/delete/:name', (req, res) => {
    })
 console.log(sampleCars);
 res.redirect('/');
+})
 
+app.get('/update/:name', (req, res) => {
+    let carToUpdate = {};
+    sampleCars.forEach((Car) => {
+        if(req.params.name === Car.name) {
+            carToUpdate = Car
+        }
+       })
+       res.render('pimp.ejs', {carToUpdate: carToUpdate});
+})
+
+
+app.post('/update/:name', (req, res) => {
+    console.log(req.body);
+    sampleCars.forEach((Car) => {
+        if(req.params.name === Car.name) {
+            Car.name = req.body.name
+            Car.model = req.body.model
+            Car.color = req.body.color
+            Car.year = req.body.year
+            Car.engine = req.body.engine
+            Car.power = req.body.power
+            Car.topSpeed = req.body.topSpeed
+        }
+       })
+    res.redirect('/');
+    console.log(sampleCars);
 })
 
 app.post('/createCar', (req, res) => {

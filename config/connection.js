@@ -1,7 +1,6 @@
-const { connection } = require('mongoose');
-
+const mongoose = require('mongoose');
 require('dotenv').config()
-const mongoose = require(mongoose);
+
 const connectionString = process.env.SUPERCAR_DB
 mongoose.connect(connectionString)
 mongoose.connection.on('connected', () => {

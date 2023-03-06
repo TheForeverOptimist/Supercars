@@ -9,15 +9,7 @@ const supercarSchema = new mongoose.Schema(
         name:String,
         model:String,
         year:String 
-}
-
-
-
-
-
-
-
-)
+})
 const Supercar = mongoose.model('superCarCollection', supercarSchema);
 
 module.exports = Supercar
